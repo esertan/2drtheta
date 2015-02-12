@@ -1,0 +1,4 @@
+build/
+*.lx
+*.swp
+*.sh
