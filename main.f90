@@ -3,7 +3,7 @@ program main
     use mydefs
     use inits
     use calcs
-    !use writes
+    use writes
 
     implicit none
 
@@ -49,16 +49,19 @@ program main
     end if
 
 
-    iflag = read_key(fix)
+    iflag = read_key(geo)
 
     if(iflag==1) then
 
-       call init_fixed(r01, r02, a0)
+       call init_coords(xyz0, maxatoms, r01, r02, a0)
 !
-!       call make_stretch(r1, r2, r01, r02, xmin, step, ssize)
+       call make_stretch(r1, r2, r01, r02, xmin, step, ssize)
 
-        call make_bend(a, a0, amin, astep, asize)
+!        call make_bend(a, a0, amin, astep, asize)
 
+        call write_rgrid(r1,r2, step)
+
+        call write_stretch(r1, r2, a0, maxatoms, step, aname)
     end if
 
     call deallocate_arrays(xyz0, r1, r2, a, aname)

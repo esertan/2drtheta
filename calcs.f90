@@ -19,7 +19,7 @@ contains
 
             r1(j,i) = r01+xmin+l
             r2(j,i) = r02+xmin+k
-            write(*,*) r1(j,i), r2(j,i), l, k
+!            write(*,*) r1(j,i), r2(j,i), l, k
 
         end do
     end do

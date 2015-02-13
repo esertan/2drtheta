@@ -5,6 +5,8 @@ GRIDINFO
 -0.2 21 1.0
 ATOMTYPES
 H2 O1 H3
-FIXED
-1.8 1.8 105
+GEOMETRY
+0.000000        0.756650       -0.469993     h x y z
+0.000000       -0.000000        0.118887     o x y z
+0.000000       -0.756650       -0.469993     h x y z
 END OF INPUT

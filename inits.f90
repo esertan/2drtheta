@@ -87,27 +87,29 @@ contains
 
     end subroutine get_atypes
 !
-!    subroutine init_coords(xyz0, maxatoms, r01, r02, a0)
+    subroutine init_coords(xyz0, maxatoms, r01, r02, a0)
     
     ! Subroutine reads in initial geometry from stdin in cartesian coordinates (Angstrom). Converts coordinates to (r1, r2, theta) format.
-!    integer(ik), intent(inout) :: maxatoms
-!    real(rk), allocatable, intent(inout) :: xyz0(:,:)
-!    integer :: i,k
-!
-!    write(*,*) 'Reading input geometry (a.u)'
+    integer(ik), intent(inout) :: maxatoms
+    real(rk), allocatable, intent(inout) :: xyz0(:,:)
+    real(rk), intent(inout) :: r01, r02, a0
+    integer :: i,k
 
-!    do i=1, maxatoms
-!        read(*,*) (xyz0(i,k), k=1,3)
-!        xyz0(i,:) = xyz0(i,:)/autoaa
-!!        write(*,*) (xyz0(i,k), k=1,3)
-!    end do
-!    
-!    r01 = sqrt(sum((xyz0(1,:)-xyz0(2,:))**2))
-!    r02 = sqrt(sum((xyz0(3,:)-xyz0(2,:))**2))
-!    a0 = acos(sum((xyz0(3,:)-xyz0(2,:))*(xyz0(1,:)-xyz0(2,:)))/r01/r02)
-!
-!
-!    end subroutine init_coords
+    write(*,*) 'Reading input geometry (a.u)'
+
+    do i=1, maxatoms
+        read(*,*) (xyz0(i,k), k=1,3)
+        xyz0(i,:) = xyz0(i,:)/autoaa
+!        write(*,*) (xyz0(i,k), k=1,3)
+    end do
+    
+    r01 = sqrt(sum((xyz0(1,:)-xyz0(2,:))**2))
+    r02 = sqrt(sum((xyz0(3,:)-xyz0(2,:))**2))
+    a0 = acos(sum((xyz0(3,:)-xyz0(2,:))*(xyz0(1,:)-xyz0(2,:)))/r01/r02)
+
+    write(*,*) r01, r02, a0    
+
+    end subroutine init_coords
 
     subroutine init_fixed(r01, r02, a0)
 
