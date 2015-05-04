@@ -45,8 +45,8 @@ contains
     real(rk), allocatable, intent(in) :: r1(:,:), r2(:,:)
     real(rk) :: a0
     character(len=3), allocatable, intent(in) :: aname(:)
-    character(len=11) :: cfile
-    character(len=7) :: dfile
+    character(len=12) :: cfile
+    character(len=8) :: dfile
     integer(ik) :: imol, jmol, fc=0
 
     do jmol=1,step
@@ -55,11 +55,13 @@ contains
 !            write(*,*) "imol=", imol, "fc=", fc
             select case(fc)
                 case(1:9)
-                    write(cfile, '(a,i1)') '2DRTHETA00', fc
+                    write(cfile, '(a,i1)') '2DRTHETA000', fc
                 case(10:99)
-                    write(cfile, '(a,i2)') '2DRTHETA0', fc
+                    write(cfile, '(a,i2)') '2DRTHETA00', fc
                 case(100:999)
-                    write(cfile, '(a,i3)') '2DRTHETA', fc
+                    write(cfile, '(a,i3)') '2DRTHETA0', fc
+                case(1000:9999)
+                    write(cfile, '(a,i4)') '2DRTHETA', fc
             end select
 
 !            write(*,*) 'Writing file:', cfile
@@ -84,10 +86,12 @@ contains
 
             select case(imol)
                 case(1:9)
-                    write(dfile, '(a,i1)') 'TRAJ00', imol
+                    write(dfile, '(a,i1)') 'TRAJ000', imol
                 case(10:99)
-                    write(dfile, '(a,i2)') 'TRAJ0', imol
+                    write(dfile, '(a,i2)') 'TRAJ00', imol
                 case(100:999)
+                    write(dfile, '(a,i3)') 'TRAJ0', imol
+                case(1000:9999)
                     write(dfile, '(a,i3)') 'TRAJ', imol
 
             end select
