@@ -26,9 +26,9 @@ contains
     
     end subroutine make_stretch
 
-    subroutine make_bend(a, a0, amin, astep, asize)
+    subroutine make_bend(a, amin, astep, asize)
 
-    real(rk), intent(in) :: a0, amin, asize
+    real(rk), intent(in) :: amin, asize
     real(rk), allocatable, intent(inout) :: a(:)
     real(rk) :: k
     integer(ik) :: i, astep
@@ -36,8 +36,8 @@ contains
     do i=1,astep
         k=i*asize
 
-        a(i) = a0+amin+k
-        write(*,*) a(i), deg(a(i)) 
+        a(i) = amin+k
+        !write(*,*) a(i), deg(a(i)) 
 
     end do
     

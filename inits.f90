@@ -135,10 +135,11 @@ contains
     read(*,*) xmin, step, ssize
     write(*,*) xmin, step, ssize
     read(*,*) amin, astep, asize
-    !Convert astep to radians
+    !Convert amin, asize to radians
+    amin=rad(amin)
     asize=rad(asize)
     
-    write(*,*) amin, astep, asize
+    !write(*,*) amin, astep, asize
 
 
     end subroutine init_grid
